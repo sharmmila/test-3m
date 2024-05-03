@@ -1,0 +1,48 @@
+<h1>
+    Film detail:
+</h1>
+
+<div>
+    <img src="/media/{{ film.image }}">
+    <h2>{{ film.title }}-{{ film.rating }}</h2>
+    
+    <h3>{{ film.year }}</h3>
+    
+    <h3>Genre:</h3>
+    
+    {% for genre in film.genres.all %}
+    <p>
+        {{ genre.name }}
+    </p>
+    {% endfor %}
+    
+    <h4>Actors:</h4>
+    
+    {% for actor in film.actors.all %}  
+    <p>
+        {{ actor.text }}
+    </p>
+    {% endfor %}
+    
+    
+    
+    <p>
+        {{ film.description }}
+    </p>
+
+
+    <a href="/films/">Back to main page</a>
+</div>
+
+
+<h2>
+
+    Reviews:
+</h2>
+
+{% for review in film.reviews.all %}
+    <p>
+        {{ review.text }}
+    </p>
+<a href="/film/create_review/" class="btn btn-outline-secondary btn-sm">Оставить отзыв</a>
+{% endfor %}
